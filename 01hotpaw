@@ -11,8 +11,6 @@ SHR=0:EHR=0:HR=0:TP=0
 # V  is Test cylinder Volume
 # VPr is Vol/Press rate of test cylinder
 
-
-
 input "Start Pressure",SP
 input "End Pressure", EP
 input "Start Time"(fn time$(-1)),SHR
@@ -27,4 +25,34 @@ VPr = (V/WP)
 SAC = (VPr*CTP)/HR
 print SAC
 end
+
+
+#EAN_Mixes.bas
+
+WP=0:EP=0:EEAN=0:BP=0:BO2=0:BO2a=0:NEAN=0
+input"What is your tank's working psi?",WP
+input"What is your existing tank psi?",EP
+input"What is your current EAN?",EEAN
+EAN=EEAN/100
+input"What is your balance fill pressure?", BP
+input"What is your balance O2 percent?", BO2
+BO2a=BO2/100
+NEAN=(((EAN)*(EP))+((BO2a)*(BP)))/WP*(100)
+print "Your new EAN is",NEAN
+end
+
+
+
+#MOD.bas
+MOD=0:PPO=0:FO=0:FOA=0
+input "What is your EAN?", FOA
+FO=FOA/100
+input "What is your op pressure? (bar)", PPO
+MOD=((PPO/FO)-1)*33
+print "Your Max Operating Depth is:", MOD, "feet."
+end
+
+
+
+
 
