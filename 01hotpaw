@@ -1,0 +1,30 @@
+#SAC Rate
+
+SAC=0:PSI=0:SP=0:EP=0:V=0:VPr=0
+SHR=0:EHR=0:HR=0:TP=0
+
+# SAC is Surface Air Consumption
+# PSI is Pounds per Square Inch, generally gauge 
+# WP is Working Pressure of sample cylinder
+# HR is duration of test sample
+# CTP is Consumed Test Pressure in lbs/sq.in.
+# V  is Test cylinder Volume
+# VPr is Vol/Press rate of test cylinder
+
+
+
+input "Start Pressure",SP
+input "End Pressure", EP
+input "Start Time"(fn time$(-1)),SHR
+input "End Time" (fn time$(-1)),EHR
+input "Test Cylinder Working Pressure", WP
+input "Test Cylinder Volume" , V
+
+CTP = (SP-EP)
+HR = (SHR-EHR)
+
+VPr = (V/WP)
+SAC = (VPr*CTP)/HR
+print SAC
+end
+
